@@ -10,8 +10,13 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        // $product = new Product();
-        // $manager->persist($product);
+        // Création d'un utilisateur admin
+        $user = new User();
+        $user->setEmail('admin@admin.fr')
+            ->setPassword('$2y$13$Cw5xWlfd4hq/jKcz9s9dzOwnThPHEgSgPX30Iw3Qre4crZHiF5wPK') // admin
+            ->setRoles(['ROLE_ADMIN'])
+            ;
+        $manager->persist($user);
 
         $manager->flush();
     }
