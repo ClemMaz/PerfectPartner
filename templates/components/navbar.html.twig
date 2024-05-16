@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 10px;">
+
+    <div class="container">
+        
+       <a href="/">
+    <img src="{{ asset('images/LogoPP.png') }}" alt="Logo" class="navbar-brand-logo" style="width: 10%;  border-radius: 10%;">
+</a>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link h1 text-white" href="/login">Login</a>
+                </li>
+                {% if is_granted('ROLE_USER') %}
+                <!-- Afficher les éléments spécifiques aux utilisateurs connectés -->
+                <li class="nav-item">
+                    <a class="nav-link h1 text-white" href={{ path('account') }}>Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link h1 text-white" href="/logout">Logout</a>
+                </li>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                <!-- Afficher les éléments spécifiques aux administrateurs -->
+                <li class="nav-item">
+                    <a class="nav-link h1 text-white" href="/admin">Admin</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        {% if not is_granted('ROLE_USER') %}
+        <!-- Afficher le bouton "Sign In" pour les utilisateurs non connectés -->
+        <div class="d-none d-lg-block">
+            <a class="btn btn-light h1" href="/register">Sign In</a>
+        </div>
+        {% endif %}
+    </div>
+</nav>
+{% endblock %}
