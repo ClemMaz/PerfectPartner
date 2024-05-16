@@ -34,31 +34,31 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 50, nullable: true)]
     private ?string $firstname = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 50, nullable: true)]
     private ?string $lastname = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 50, nullable: true)]
     private ?string $username = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 50, nullable: true)]
     private ?string $gender = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 50, nullable: true)]
     private ?string $age = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 50, nullable: true)]
     private ?string $location = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $competence = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $domain = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?bool $isVerified = null;
 
     public function getId(): ?int
