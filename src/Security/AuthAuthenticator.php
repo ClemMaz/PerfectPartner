@@ -48,13 +48,12 @@ class AuthAuthenticator extends AbstractLoginFormAuthenticator
             // Redirect to the admin dashboard
             return new RedirectResponse($this->urlGenerator->generate('admin'));
         }
-        //if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
-            //return new RedirectResponse($targetPath);
-        //}
+        if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
+            return new RedirectResponse($targetPath);
+        }
 
         // For example:
-        // return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        //return new RedirectResponse($this->urlGenerator->generate('admin'));
+        return new RedirectResponse($this->urlGenerator->generate('admin'));
         //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
         
     }
