@@ -19,7 +19,8 @@
                         </div>
                     {% endif %}
 
-                    <form>
+                    <form action="{{ path('app_login') }}" method="post">
+
                         <div class="form-group">
                             <label for="inputEmail">Email</label>
                             <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
