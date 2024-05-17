@@ -9,13 +9,15 @@
 </a>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
+            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
                 <li class="nav-item">
                     <a class="nav-link h1 text-white" href="/login">Login</a>
                 </li>
+                {% endif %}
                 {% if is_granted('ROLE_USER') %}
                 <!-- Afficher les éléments spécifiques aux utilisateurs connectés -->
                 <li class="nav-item">
-                    <a class="nav-link h1 text-white" href={{ path('app_profile') }}>Profile</a>
+                    <a class="nav-link h1 text-white" href={{ path('app_profile') }}>My Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link h1 text-white" href="/logout">Logout</a>
