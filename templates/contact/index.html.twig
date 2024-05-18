@@ -9,6 +9,10 @@
                     <h1>Contact Us</h1>
                 </div>
                 <div class="card-body">
+                 {% for flash_success in app.flashes('success') %}
+                        <div class="alert alert-success" role="alert">{{ flash_success }}</div>
+                    {% endfor %}
+                    
                     {{ form_start(form, {'attr': {'class': 'form'}}) }}
                         <div class="form-group">
                             {{ form_label(form.full_name, 'Full Name', {'label_attr': {'class': 'form-label'}}) }}
