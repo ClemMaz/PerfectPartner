@@ -28,6 +28,9 @@ class ContactController extends AbstractController
             // TODO: Send an email or save the data to the database
 
             // Redirect to a confirmation page or back to the form page
+
+            $this->addFlash('success', 'Votre message a bien été envoyé ! Notre équipe va vous recontacter dans les plus brefs délais.');
+
             return $this->redirectToRoute('contact');
         }
 
