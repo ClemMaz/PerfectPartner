@@ -58,8 +58,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $domain = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column]
+
     private ?bool $isVerified = null;
+
+    public function __construct()
+{
+    $this->isVerified = false;
+}
 
     public function getId(): ?int
     {
