@@ -48,6 +48,8 @@ class AuthAuthenticator extends AbstractLoginFormAuthenticator
         );
     }
 
+    
+
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
 
