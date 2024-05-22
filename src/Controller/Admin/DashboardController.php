@@ -25,14 +25,22 @@ class DashboardController extends AbstractDashboardController
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
-        $user = $this->security->getUser();
+        $user = $this->getUser();
 
-        if ($user && in_array('ROLE_USER', $user->getRoles())) {
-            return $this->redirectToRoute('app_home');
+        // If the user is not logged in, redirect to login
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
         }
 
-        
-         return $this->render('admin/dashboard.html.twig');
+        // If the user is not an admin, redirect to login
+        if (!in_array('ROLE_ADMIN', $user->getRoles())) {
+            return $this->redirectToRoute('app_login');
+        }
+
+        // Render the admin dashboard
+        return $this->render('admin/dashboard.html.twig', [
+            'controller_name' => 'DashboardController',
+        ]);
     }
 
     
