@@ -1,9 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends '@EasyAdmin/page/content.html.twig' %}
 
 {% block title %}Dashboard{% endblock %}
 
 {% block body %}
     <h1>Dashboard</h1>
+
+        
 
     
  {% if is_granted('ROLE_ADMIN') %}
